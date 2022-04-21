@@ -14,26 +14,23 @@ public class Cajero {
         double ingreso;
         double retiro;
         double saldo_actual = 0;
-        String nombre;
         String clave;
         PreparedStatement ps;
         
-      
+        
         
         //-----------------------------------------------------------------------------------------------------------------------------
 
         
-          nombre = JOptionPane.showInputDialog("Digite su nombre: ");
-          clave = JOptionPane.showInputDialog("Digite su clave: ");
+            clave = JOptionPane.showInputDialog("Digite su clave: ");
           
           try {
           
              Coneccion con = new Coneccion();
              Connection conexion = con.getConnection();
              
-             ps = conexion.prepareStatement("insert into cliente (nombre, clave) values (?,?)");
-             ps.setString(1, nombre);
-             ps.setString(2, clave);
+             ps = conexion.prepareStatement("insert into cliente (clave) values (?)");
+             ps.setString(1, clave);
              
              ps.executeUpdate();
              
